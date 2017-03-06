@@ -1,0 +1,190 @@
+body, html
+{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 14px;
+    background: #555;
+}
+
+*
+{
+  box-sizing: border-box;
+}
+
+#page
+{
+    width: 900px;
+    padding: 20px;
+    background: #fff;
+    margin: 20px auto 20px auto;
+}
+
+label
+{
+  display: block;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #555;
+  margin-top: 1em;
+}
+
+textarea
+{
+  width: 100%;
+}
+
+#instrument
+{
+
+}
+
+.instrument table
+{
+  border: 1px solid #aaa;
+  margin: 20px 0 20px 0;
+  width: 100%;
+  border-spacing: 0;
+}
+
+.instrument table td
+{
+  padding: 10px;
+}
+
+.instrument table tr td:nth-of-type(1)
+{
+  width: 25%;
+}
+
+/**
+ * Instrument meta info
+ */
+table.meta td:nth-of-type(1)
+{
+ background: #ddd;
+ text-align: right;
+}
+
+table.meta td
+{
+  border-bottom: 1px solid #ddd;
+}
+
+/**
+ * Rubrics
+ */
+.rubric
+{
+  font-size: 1.2em;
+  padding: 10px;
+  border: 1px solid #ddd;
+  quotes: "\201C""\201D";
+}
+
+.rubric em
+{
+  font-weight: bold;
+}
+
+.rubric::before
+{
+  display: block;
+  float: left;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.25em;
+  color: #aaa;
+  top: 0.25em;
+  position: relative;
+  margin: 0 10px 0 0;
+}
+
+/**
+ * Consentfulness atoms
+ */
+table.instrumentatom tr:nth-of-type(1) td
+{
+ text-align: left !important;
+}
+
+table.instrumentatom tr td:nth-of-type(1)
+{
+ text-align: right;
+}
+
+table.instrumentatom tr:nth-of-type(2), table.instrumentatom tr td:nth-of-type(1)
+{
+  background: #ddd;
+}
+
+table.instrumentatom tr:nth-of-type(3) td
+{
+  border-bottom: 1px solid #ccc;
+}
+
+table.instrumentatom tr:nth-of-type(2) td:nth-of-type(2), tr:nth-of-type(3) td:nth-of-type(2), table.instrumentatom tr:nth-of-type(4) td:nth-of-type(2)
+{
+  border-right: 1px solid #ccc;
+}
+
+table.instrumentatom .num
+{
+  font-size: 2em;
+  color: #999;
+  float: left;
+  width: 50px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+table.instrumentatom .statement
+{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.happy::before, .nothappy::before, .expect::before, .notexpect::before
+{
+  display: block;
+  float: left;
+  margin: 0 30px 0 0;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.happy::before {
+  content: url(img/happy.png);
+}
+
+.nothappy::before {
+  content: url(img/sad.png);
+}
+
+.expect::before {
+  content: url(img/tick.png);
+}
+
+.notexpect::before {
+  content: url(img/cross.png);
+}
+
+/**
+ * Print overrides
+ */
+@media print {
+  body, html
+  {
+    background: #fff;
+  }
+
+  h1
+  {
+    display: none;
+  }
+
+  h2
+  {
+    font-size: 2em;
+  }
+}
