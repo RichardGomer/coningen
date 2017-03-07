@@ -170,6 +170,57 @@ table.instrumentatom .statement
 }
 
 /**
+ * Scoring chart
+ */
+.score {
+
+}
+
+.score td.ignorebox, .score td.scorebox, .score td.totbox {
+  border: 1px solid #333;
+}
+
+.score td.ignorebox {
+  background: repeating-linear-gradient(
+  45deg,
+  #aaa,
+  #aaa 3px,
+  transparent 3px,
+  transparent 12px
+);
+}
+
+.score tr:nth-of-type(1) td {
+  background: #ddd;
+}
+
+.score tr td:nth-of-type(1) {
+  background: #ddd;
+}
+
+math {
+  font-size: 1.4em;
+  padding: 0px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+#results {
+  border: 1px solid #bbb;
+  height: 200px;
+}
+
+#results::before {
+  content: "Notes / Results";
+  display: block;
+  font-weight: bold;
+  color: #888;
+  padding: 8px;
+  font-size: 1.2em;
+}
+
+
+/**
  * Print overrides
  */
 @media print {
