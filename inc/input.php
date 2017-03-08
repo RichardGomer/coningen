@@ -23,7 +23,6 @@
     <label>Include scoring chart</label>
     <input type="checkbox" value="1" name="scoring" id="scoring" />
 
-
     <hr />
     <input type="submit" value="Generate" />
 </form>

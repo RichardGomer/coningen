@@ -215,59 +215,75 @@ if($showinputs)
 ?>
 
 <div id="save">
-    <button id="savebtn">Send Answers</button>
+    <button id="savebtn">Save Instrument</button>
+    <button id="sendbtn">Send Answers</button>
 </div>
 
 <script type="text/javascript">
 
+function savePage(cb_done){
+    // Convert input values to attributes
+
+    // input
+    $('input').each(function(i, el){
+        $(el).attr('value', $(el).val());
+    });
+
+    // textarea
+    $('textarea').each(function(i, el){
+        $(el).text($(el).val());
+    });
+
+    // checkbox/radio
+    $('input[type="checkbox"],input[type="radio"]').each(function(i, el){
+
+        if($(el).is(':checked'))
+        {
+            $(el).attr('checked', 'checked');
+        }
+        else
+        {
+            $(el).removeAttr('checked');
+        }
+    });
+
+    // Convert DOM to HTML
+    var html = "<html>\n" + $('html').html() + "\n</html>";
+
+    $.ajax({
+        url: "/save.php",
+        method: "POST",
+        data: {html: html},
+        dataType: "json"
+    }).done(cb_done).fail(function(){ alert("Sorry, something went wrong."); });
+}
+
 $().ready(function(){
 
+    // Save the INSTRUMENT (ie leave the "send answers" button intact)
     $('#savebtn').click(function(){
 
-        // Convert input values to attributes
+        $('#savebtn').remove();
 
-        // input
-        $('input').each(function(i, el){
-            $(el).attr('value', $(el).val());
-        });
+        var done = function(res){
+            console.log("Sent instrument", res);
+            $('#save').html('<p id=\"saved\">Saved instrument as <a href=\"' + res.href + '\">' + res.href + '</a></p>');
+        }
 
-        // textarea
-        $('textarea').each(function(i, el){
-            $(el).text($(el).val());
-        });
+        savePage(done);
+    });
 
-        // checkbox/radio
-        $('input[type="checkbox"],input[type="radio"]').each(function(i, el){
+    // Save the completed answers (ie, remove the save controls entirely)
+    $('#sendbtn').click(function(){
 
-            if($(el).is(':checked'))
-            {
-                $(el).attr('checked', 'checked');
-            }
-            else
-            {
-                $(el).removeAttr('checked');
-            }
-        });
-
-        // Convert DOM to HTML
         $('#save').remove();
-        var html = "<html>\n" + $('html').html() + "\n</html>";
 
-        console.log(html);
+        var done = function(res){
+            alert("Response sent");
+        }
 
-        // Send via formspree.io
-
-        $.ajax({
-            url: "save.php",
-            method: "POST",
-            data: {html: html},
-            dataType: "json",
-            success: function(){
-                alert("Your response has been sent");
-            }
-        });
-
-    })
+        savePage(done);
+    });
 
 });
 

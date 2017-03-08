@@ -219,11 +219,34 @@ math {
   font-size: 1.2em;
 }
 
+#save button
+{
+  border: 1px solid #aaa;
+  border-radius: 1em;
+  padding: 10px 14px 10px 14px;
+  margin: 10px 20px 10px 0;
+  color: #fff;
+  background: #666;
+  font-size: 1.4em;
+}
+
+#save button#sendbtn {
+  background: #69bc32;
+}
+
+#save button#savebtn {
+  background: #e0a328;
+}
+
+#saved {
+  font-size: 2em;
+}
 
 /**
  * Print overrides
  */
 @media print {
+
   body, html
   {
     background: #fff;
@@ -267,5 +290,9 @@ math {
   .score td.ignorebox
   {
     border: 0;
+  }
+
+  #save{
+    display: none;
   }
 }
