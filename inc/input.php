@@ -17,6 +17,13 @@
     <label>Include standard rubrics and instructions</label>
     <input type="checkbox" value="1" name="rubric" id="rubric" checked="checked" />
 
+    <label>Include form inputs (for interactive use)</label>
+    <input type="checkbox" value="1" name="inputs" id="inputs" checked="checked" />
+
+    <label>Include scoring chart</label>
+    <input type="checkbox" value="1" name="scoring" id="scoring" />
+
+
     <hr />
     <input type="submit" value="Generate" />
 </form>
